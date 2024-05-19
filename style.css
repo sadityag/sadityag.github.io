@@ -1,10 +1,16 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
     background-color: #f5f5f5;
     color: #333;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
 }
 
 header {
@@ -14,6 +20,16 @@ header {
     text-align: center;
 }
 
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
 nav ul {
     background: #444;
     overflow: hidden;
@@ -21,6 +37,7 @@ nav ul {
     padding: 0;
     text-align: center;
     margin: 0;
+    list-style: none;
 }
 
 nav ul li {
@@ -34,11 +51,34 @@ nav ul li a {
 }
 
 main {
-    padding: 1rem;
+    padding: 2rem 0;
 }
 
 section {
     margin-bottom: 2rem;
+}
+
+section h2 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+section p {
+    margin-bottom: 1rem;
+}
+
+section ul {
+    list-style: none;
+    padding: 0;
+}
+
+section ul li {
+    background: #fff;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 footer {
@@ -77,5 +117,18 @@ form button {
 }
 
 form button:hover {
+    background: #555;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.btn:hover {
     background: #555;
 }
