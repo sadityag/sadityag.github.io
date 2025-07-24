@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Title - Aditya Gadam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../../index.html">Aditya Gadam</a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="../../index.html" class="nav-link">Home</a></li>
+                        <li><a href="../bio.html" class="nav-link">Bio</a></li>
+                        <li><a href="index.html" class="nav-link active">Projects</a></li>
+                        <li><a href="../notes.html" class="nav-link">Notes</a></li>
+                        <li><a href="../cv.html" class="nav-link">CV</a></li>
+                        <li><a href="../contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Breadcrumb Navigation -->
+            <nav class="breadcrumb">
+                <a href="../../index.html">Home</a> → 
+                <a href="index.html">Projects</a> → 
+                <span>Project Title</span>
+            </nav>
+
+            <!-- Project Header -->
+            <section class="project-header">
+                <div class="project-meta">
+                    <span class="project-type">Research</span>
+                    <span class="project-year">2024-2025</span>
+                    <span class="project-status">Completed</span>
+                </div>
+                <h1>Project Title</h1>
+                <p class="project-subtitle">Brief description of the project and its significance in the field.</p>
+                
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Mathematica</span>
+                    <span class="tech-tag">LaTeX</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/username/repo" class="btn btn-primary" target="_blank">
+                        <span>📁</span> View Code
+                    </a>
+                    <a href="../../assets/pdfs/papers/project-paper.pdf" class="btn btn-secondary" target="_blank">
+                        <span>📄</span> Read Paper
+                    </a>
+                    <a href="../../assets/notebooks/project-analysis.nb" class="btn btn-secondary" target="_blank">
+                        <span>📓</span> Mathematica Notebook
+                    </a>
+                </div>
+            </section>
+
+            <!-- Project Content -->
+            <section class="project-content">
+                <!-- Abstract/Overview -->
+                <div class="content-section">
+                    <h2>Overview</h2>
+                    <p>Detailed description of the project, its goals, methodology, and significance. This section should provide context and explain what problem you're solving.</p>
+                </div>
+
+                <!-- Text Content Section -->
+                <div class="content-section">
+                    <h2>Methodology</h2>
+                    <p>Explain your approach, theoretical framework, and computational methods used in this project.</p>
+                    
+                    <h3>Key Equations</h3>
+                    <p>You can include mathematical equations here:</p>
+                    <div class="equation-block">
+                        <p><em>Example: Include LaTeX-rendered equations or images of key formulas</em></p>
+                    </div>
+                </div>
+
+                <!-- Images Section -->
+                <div class="content-section">
+                    <h2>Results & Visualizations</h2>
+                    <div class="image-gallery">
+                        <div class="image-item">
+                            <img src="../../assets/images/projects/project-name/result-1.png" alt="Result 1">
+                            <p class="image-caption">Caption describing this visualization or result.</p>
+                        </div>
+                        <div class="image-item">
+                            <img src="../../assets/images/projects/project-name/result-2.png" alt="Result 2">
+                            <p class="image-caption">Another important result or visualization.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Section -->
+                <div class="content-section">
+                    <h2>Implementation</h2>
+                    <p>Key aspects of the computational implementation:</p>
+                    
+                    <div class="code-block">
+                        <pre><code># Example code snippet
+import numpy as np
+import matplotlib.pyplot as plt
+
+def quantum_simulation():
+    # Your code here
+    return results</code></pre>
+                    </div>
+                </div>
+
+                <!-- Files & Downloads -->
+                <div class="content-section">
+                    <h2>Resources & Downloads</h2>
+                    <div class="downloads-grid">
+                        <div class="download-item">
+                            <div class="download-icon">📄</div>
+                            <div class="download-info">
+                                <h4>Research Paper</h4>
+                                <p>Complete paper with theoretical background and results</p>
+                                <a href="../../assets/pdfs/papers/project-paper.pdf" target="_blank">Download PDF</a>
+                            </div>
+                        </div>
+                        
+                        <div class="download-item">
+                            <div class="download-icon">📓</div>
+                            <div class="download-info">
+                                <h4>Mathematica Notebook</h4>
+                                <p>Interactive calculations and analytical work</p>
+                                <a href="../../assets/notebooks/project-analysis.nb" target="_blank">Download .nb</a>
+                            </div>
+                        </div>
+                        
+                        <div class="download-item">
+                            <div class="download-icon">💻</div>
+                            <div class="download-info">
+                                <h4>Source Code</h4>
+                                <p>Complete codebase with documentation</p>
+                                <a href="https://github.com/username/project-repo" target="_blank">View on GitHub</a>
+                            </div>
+                        </div>
+
+                        <div class="download-item">
+                            <div class="download-icon">📊</div>
+                            <div class="download-info">
+                                <h4>Data Files</h4>
+                                <p>Raw data and processed results</p>
+                                <a href="../../assets/data/project-data.zip" target="_blank">Download Data</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collaboration/Acknowledgments -->
+                <div class="content-section">
+                    <h2>Acknowledgments</h2>
+                    <p>Collaborators, advisors, and institutions that contributed to this work.</p>
+                </div>
+            </section>
+
+            <!-- Navigation to other projects -->
+            <section class="project-navigation">
+                <a href="previous-project.html" class="nav-project prev">
+                    <span>← Previous</span>
+                    <span>Previous Project Name</span>
+                </a>
+                <a href="index.html" class="nav-project center">
+                    <span>All Projects</span>
+                </a>
+                <a href="next-project.html" class="nav-project next">
+                    <span>Next →</span>
+                    <span>Next Project Name</span>
+                </a>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Aditya Gadam. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
