@@ -34,7 +34,7 @@
         <div class="container">
             <section class="page-header">
                 <h1>Curriculum Vitae</h1>
-                <p>My academic and professional journey in theoretical physics.</p>
+                <p>My academic and professional journey solving complex problems.</p>
             </section>
 
             <!-- Download Section -->
@@ -46,7 +46,10 @@
                         <div class="download-info">
                             <h4>Full CV</h4>
                             <p>Complete academic curriculum vitae with detailed research experience, publications, and achievements</p>
-                            <a href="../assets/pdfs/CV_Gadam.pdf" target="_blank">Download CV</a>
+                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
+                                <a href="../assets/pdfs/cv-aditya-gadam.pdf" target="_blank" class="btn btn-primary">Download CV</a>
+                                <button onclick="togglePreview('cv')" class="btn btn-secondary">Preview CV</button>
+                            </div>
                         </div>
                     </div>
                     
@@ -55,18 +58,37 @@
                         <div class="download-info">
                             <h4>Resume</h4>
                             <p>Concise resume highlighting key qualifications and experience</p>
-                            <a href="../assets/pdfs/Resume_AdityaGadam.pdf" target="_blank">Download Resume</a>
+                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
+                                <a href="../assets/pdfs/resume-aditya-gadam.pdf" target="_blank" class="btn btn-primary">Download Resume</a>
+                                <button onclick="togglePreview('resume')" class="btn btn-secondary">Preview Resume</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- CV Preview Section -->
-            <section class="content-section">
-                <h2>CV Preview</h2>
+            <section class="content-section" id="cv-preview" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2>CV Preview</h2>
+                    <button onclick="closePreview('cv')" class="btn btn-secondary">Close Preview</button>
+                </div>
                 <div style="border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; background: #1a1a1a;">
                     <iframe src="../assets/pdfs/cv-aditya-gadam.pdf" width="100%" height="600px" style="border: none;">
                         <p>Your browser doesn't support PDF viewing. <a href="../assets/pdfs/cv-aditya-gadam.pdf" target="_blank">Download the CV instead</a>.</p>
+                    </iframe>
+                </div>
+            </section>
+
+            <!-- Resume Preview Section -->
+            <section class="content-section" id="resume-preview" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2>Resume Preview</h2>
+                    <button onclick="closePreview('resume')" class="btn btn-secondary">Close Preview</button>
+                </div>
+                <div style="border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; background: #1a1a1a;">
+                    <iframe src="../assets/pdfs/resume-aditya-gadam.pdf" width="100%" height="600px" style="border: none;">
+                        <p>Your browser doesn't support PDF viewing. <a href="../assets/pdfs/resume-aditya-gadam.pdf" target="_blank">Download the resume instead</a>.</p>
                     </iframe>
                 </div>
             </section>
@@ -88,5 +110,31 @@
             <p>&copy; 2025 Aditya Gadam. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        function togglePreview(type) {
+            const previewId = type + '-preview';
+            const previewSection = document.getElementById(previewId);
+            
+            if (previewSection.style.display === 'none' || previewSection.style.display === '') {
+                // Hide any other open previews
+                document.getElementById('cv-preview').style.display = 'none';
+                document.getElementById('resume-preview').style.display = 'none';
+                
+                // Show the requested preview
+                previewSection.style.display = 'block';
+                
+                // Scroll to the preview
+                previewSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                previewSection.style.display = 'none';
+            }
+        }
+        
+        function closePreview(type) {
+            const previewId = type + '-preview';
+            document.getElementById(previewId).style.display = 'none';
+        }
+    </script>
 </body>
 </html>
