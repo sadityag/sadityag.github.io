@@ -8,6 +8,54 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Profile picture styling for hero section */
+        .hero-profile {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 3px solid #2a2a2a;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-profile:hover {
+            border-color: #666;
+            transform: scale(1.02);
+        }
+        
+        /* Placeholder styling if no image is provided */
+        .hero-profile-placeholder {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 3px solid #2a2a2a;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 3rem;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-profile-placeholder:hover {
+            border-color: #666;
+            transform: scale(1.02);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-profile,
+            .hero-profile-placeholder {
+                width: 120px;
+                height: 120px;
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,6 +69,7 @@
                         <li><a href="index.html" class="nav-link active">Home</a></li>
                         <li><a href="pages/bio.html" class="nav-link">Bio</a></li>
                         <li><a href="pages/projects/index.html" class="nav-link">Projects</a></li>
+                        <li><a href="pages/publications.html" class="nav-link">Publications</a></li>
                         <li><a href="pages/notes.html" class="nav-link">Notes</a></li>
                         <li><a href="pages/cv.html" class="nav-link">CV</a></li>
                         <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
@@ -33,12 +82,24 @@
     <main>
         <div class="container">
             <section class="hero">
+                <!-- Profile Picture - Replace the src with your actual image path -->
+                <img src="assets/images/profile/aditya-profile.jpg" 
+                     alt="Aditya Gadam" 
+                     class="hero-profile"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                
+                <!-- Placeholder that shows if image doesn't load -->
+                <div class="hero-profile-placeholder" style="display: none;">
+                    👤
+                </div>
+                
                 <h1>Aditya Gadam</h1>
                 <p class="subtitle">Human Being.</p>
                 <p class="hero-description">Welcome to my personal website (under construction). I'm passionate about exploring complex problems and solving puzzles, along with a whole host of other projects.</p>
                 
                 <div class="hero-links">
-                    <a href="pages/projects/index.html" class="btn btn-primary">View Projects</a>
+                    <a href="pages/publications.html" class="btn btn-primary">View Publications</a>
+                    <a href="pages/projects/index.html" class="btn btn-secondary">Research Projects</a>
                     <a href="pages/cv.html" class="btn btn-secondary">Download CV</a>
                 </div>
             </section>
@@ -46,8 +107,13 @@
             <section class="quick-overview">
                 <div class="overview-grid">
                     <div class="overview-card">
-                        <h3>Research</h3>
-                        <p>Quantum field theory, cosmology, and fundamental particle interactions</p>
+                        <h3>Publications</h3>
+                        <p>Research papers in theoretical physics, flavor anomalies, and beyond Standard Model phenomenology</p>
+                        <a href="pages/publications.html">View Papers →</a>
+                    </div>
+                    <div class="overview-card">
+                        <h3>Projects</h3>
+                        <p>Computational projects, mathematical explorations, and research implementations</p>
                         <a href="pages/projects/index.html">Explore Projects →</a>
                     </div>
                     <div class="overview-card">
@@ -67,7 +133,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Aditya Gadam. All rights reserved.</p>
+            <p>Aditya Gadam - 2025</p>
         </div>
     </footer>
 </body>
