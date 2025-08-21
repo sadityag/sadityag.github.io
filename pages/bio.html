@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio - Aditya Gadam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #667eea, #764ba2, #45b7d1, #f9ca24);
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 3rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: 55%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 55%;
+            margin-right: 0;
+            text-align: left;
+        }
+
+        .timeline-content {
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .timeline-content:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .timeline-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 2;
+            border: 3px solid #0a0a0a;
+        }
+
+        .timeline-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            z-index: 10;
+            position: relative;
+        }
+
+        .timeline-photo:hover {
+            transform: scale(2.5) translateZ(20px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            border-color: rgba(255,255,255,0.8);
+            border-radius: 12px;
+            z-index: 100;
+            object-fit: contain;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-photo {
+            float: right;
+            margin-left: 1rem;
+            margin-right: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-photo {
+            float: left;
+            margin-right: 1rem;
+            margin-left: 0;
+        }
+
+        .timeline-text {
+            font-size: 1.1rem;
+            color: #fff;
+            line-height: 1.6;
+            clear: both;
+            font-weight: 400;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -30px;
+            border-left-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -30px;
+            border-right-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-50%);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+
+        .placeholder-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2a2a2a, #404040);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.8rem;
+            text-align: center;
+            border: 3px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+            flex-direction: column;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            z-index: 10;
+            position: relative;
+        }
+
+        .placeholder-photo:hover {
+            transform: scale(2.5) translateZ(20px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            border-color: rgba(255,255,255,0.8);
+            border-radius: 12px;
+            z-index: 100;
+        }
+
+        .placeholder-photo.error {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+        }
+
+        .timeline-item:nth-child(odd) .placeholder-photo {
+            float: right;
+            margin-left: 1rem;
+            margin-right: 0;
+        }
+
+        .timeline-item:nth-child(even) .placeholder-photo {
+            float: left;
+            margin-right: 1rem;
+            margin-left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 80px;
+                margin-right: 0;
+                text-align: left;
+                padding: 1.5rem;
+                min-height: 120px;
+            }
+
+            .timeline-number {
+                left: 30px;
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -30px;
+                right: auto;
+                border-left-color: transparent;
+                border-right-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .timeline-item:nth-child(odd) .timeline-photo,
+            .timeline-item:nth-child(even) .timeline-photo,
+            .timeline-item:nth-child(odd) .placeholder-photo,
+            .timeline-item:nth-child(even) .placeholder-photo {
+                float: left;
+                margin-right: 1rem;
+                margin-left: 0;
+                width: 80px;
+                height: 80px;
+            }
+
+            .timeline-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">Aditya Gadam</a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html" class="nav-link">Home</a></li>
+                        <li><a href="bio.html" class="nav-link active">Bio</a></li>
+                        <li><a href="projects/index.html" class="nav-link">Projects</a></li>
+                        <li><a href="publications.html" class="nav-link">Publications</a></li>
+                        <li><a href="presentations.html" class="nav-link">Presentations</a></li>
+                        <li><a href="notes.html" class="nav-link">Notes</a></li>
+                        <li><a href="cv.html" class="nav-link">CV</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="page-header">
+                <h1>A Brief History of Mine</h1>
+                <p>My journey through life, academia, and beyond - told through moments and milestones.</p>
+            </section>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">0</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p0.jpg" alt="Photo 0" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p0</div>
+                        <div class="timeline-text">Was born a blurry set of pixels</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p1.jpg" alt="Photo 1" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p1</div>
+                        <div class="timeline-text">Grew up in Singapore, attending GIIS</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p2.jpg" alt="Photo 2" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p2</div>
+                        <div class="timeline-text">Played sports and learned some martial arts</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p3.jpeg" alt="Photo 3" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p3</div>
+                        <div class="timeline-text">Left Singapore to go to UC San Diego</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p4.jpg" alt="Photo 4" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p4</div>
+                        <div class="timeline-text">Learned Physics, Math, Economics, but not how to cut my hair</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p5.jpg" alt="Photo 5" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p5</div>
+                        <div class="timeline-text">Worked at a dining hall</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">6</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p6.jpg" alt="Photo 6" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p6</div>
+                        <div class="timeline-text">Did more physics math and econ</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">7</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p7.jpeg" alt="Photo 7" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p7</div>
+                        <div class="timeline-text">Learned how to cut my hair (go to a barber)</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">8</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p8.jpg" alt="Photo 8" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p8</div>
+                        <div class="timeline-text">Worked as a Teaching Assistant and Grader</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">9</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p9.jpg" alt="Photo 9" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p9</div>
+                        <div class="timeline-text">Started doing physics research</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">10</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p10.jpeg" alt="Photo 10" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p10</div>
+                        <div class="timeline-text">Got an Undergraduate Research Excellence Award</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">11</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p11.jpg" alt="Photo 11" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p11</div>
+                        <div class="timeline-text">Graduated with 2 degrees in 3 years and a whole lot of sleep deprivation</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">12</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p12.jpg" alt="Photo 12" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p12</div>
+                        <div class="timeline-text">Visited India to use a state of the art computer (and to visit my relatives)</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">13</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p13.jpg" alt="Photo 13" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p13</div>
+                        <div class="timeline-text">Went to work at Siemens in Leuven, Belgium (thankfully, they didn't require ill fitting shirts)</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">14</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p14.jpg" alt="Photo 14" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p14</div>
+                        <div class="timeline-text">Learned the art of baguette based swordsmanship</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">15</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p15.jpg" alt="Photo 15" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p15</div>
+                        <div class="timeline-text">Battled lactose intolerance</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">16</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p16.jpg" alt="Photo 16" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p16</div>
+                        <div class="timeline-text">Left to go to Santa Cruz to own a couch (and attend graduate school)</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">17</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p17.jpg" alt="Photo 17" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p17</div>
+                        <div class="timeline-text">Did some fun stuff and learned a bit of physics</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">18</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p18.jpeg" alt="Photo 18" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p18</div>
+                        <div class="timeline-text">Lost weight and met some old friends</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">19</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p19.jpg" alt="Photo 19" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p19</div>
+                        <div class="timeline-text">Found my lifelong Halloween costume</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">20</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p20.jpg" alt="Photo 20" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p20</div>
+                        <div class="timeline-text">Went outdoors</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">21</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p21.jpg" alt="Photo 21" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p21</div>
+                        <div class="timeline-text">Rekindled my interest in math-art</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">22</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p22.jpeg" alt="Photo 22" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p22</div>
+                        <div class="timeline-text">Was hard at work</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">23</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p23.jpg" alt="Photo 23" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p23</div>
+                        <div class="timeline-text">Met my fiancé</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">24</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p24.jpg" alt="Photo 24" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p24</div>
+                        <div class="timeline-text">Volunteered for physics events</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">25</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p25.jpg" alt="Photo 25" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p25</div>
+                        <div class="timeline-text">Conferences happened with me speaking at them</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">26</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p26.jpg" alt="Photo 26" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p26</div>
+                        <div class="timeline-text">Found my love for the gym</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">27</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p27.jpg" alt="Photo 27" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p27</div>
+                        <div class="timeline-text">Bought a cheap suit, so I had to attend a wedding to wear it at</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">28</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p28.jpg" alt="Photo 28" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p28</div>
+                        <div class="timeline-text">Kept playing frisbee golf</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">29</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p29.jpg" alt="Photo 29" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p29</div>
+                        <div class="timeline-text">More weddings</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">30</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p30.jpg" alt="Photo 30" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p30</div>
+                        <div class="timeline-text">Hosted grad events</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">31</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p31.jpg" alt="Photo 31" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p31</div>
+                        <div class="timeline-text">Snowboarded</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">32</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p32.jpg" alt="Photo 32" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p32</div>
+                        <div class="timeline-text">Found out I had no need for 2 ACLs</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">33</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p33.png" alt="Photo 33" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p33</div>
+                        <div class="timeline-text">Showed people purple slides and got my Ph.D.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">34</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p34.jpg" alt="Photo 34" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p34</div>
+                        <div class="timeline-text">Continued my pursuit of local home automation as a hobby</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">35</div>
+                    <div class="timeline-content">
+                        <img src="../assets/bio/p35.jpg" alt="Photo 35" class="timeline-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-photo" style="display:none;">p35</div>
+                        <div class="timeline-text">Started catching up on sleep and applying to jobs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Aditya Gadam. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

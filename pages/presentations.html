@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentations - Aditya Gadam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .presentations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .presentation-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .presentation-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .presentation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .presentation-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        
+        .presentation-icon {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+            opacity: 0.8;
+        }
+        
+        .presentation-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .presentation-type {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            align-self: flex-start;
+        }
+        
+        .presentation-date {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .presentation-venue {
+            color: #b3b3b3;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .presentation-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 0 0 1rem 0;
+            line-height: 1.3;
+        }
+        
+        .presentation-description {
+            color: #b3b3b3;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .presentation-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-presentation {
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary-presentation {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+        }
+        
+        .btn-secondary-presentation {
+            background: rgba(255, 255, 255, 0.1);
+            color: #b3b3b3;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-presentation:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-primary-presentation:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+        
+        .btn-secondary-presentation:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-tab {
+            padding: 0.7rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #b3b3b3;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .filter-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .filter-tab:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        
+        .filter-tab.active:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #b3b3b3;
+            font-size: 0.9rem;
+        }
+        
+        .content-section {
+            margin-bottom: 3rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #b3b3b3;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">Aditya Gadam</a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html" class="nav-link">Home</a></li>
+                        <li><a href="bio.html" class="nav-link">Bio</a></li>
+                        <li><a href="projects/index.html" class="nav-link">Projects</a></li>
+                        <li><a href="publications.html" class="nav-link">Publications</a></li>
+                        <li><a href="presentations.html" class="nav-link active">Presentations</a></li>
+                        <li><a href="notes.html" class="nav-link">Notes</a></li>
+                        <li><a href="cv.html" class="nav-link">CV</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="page-header">
+                <h1>Presentations & Talks</h1>
+                <p>Conference presentations, seminars, and educational talks on theoretical physics and beyond the Standard Model phenomenology.</p>
+            </section>
+
+            <!-- Statistics -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Conference Presentations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Thesis Defense</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Educational Talks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Total Presentations</div>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <div class="filter-tab active" onclick="filterPresentations('all')">All Presentations</div>
+                <div class="filter-tab" onclick="filterPresentations('thesis')">Thesis Defense</div>
+                <div class="filter-tab" onclick="filterPresentations('conference')">Conference Talks</div>
+                <div class="filter-tab" onclick="filterPresentations('educational')">Educational</div>
+            </div>
+
+            <!-- Presentations Grid -->
+            <div class="presentations-grid">
+                <!-- Thesis Defense -->
+                <div class="presentation-card" data-type="thesis">
+                    <div class="presentation-header">
+                        <div class="presentation-icon">🎓</div>
+                        <div class="presentation-meta">
+                            <span class="presentation-type">Thesis Defense</span>
+                            <span class="presentation-date">2025</span>
+                            <span class="presentation-venue">UC Santa Cruz Physics Department</span>
+                        </div>
+                    </div>
+                    <h3 class="presentation-title">The Flavor Program: Spanning Scales and Rare New Physics</h3>
+                    <p class="presentation-description">
+                        Doctoral thesis defense presentation covering novel approaches to probing physics beyond the Standard Model through precision flavor physics. Discusses multi-scale analysis from effective field theory to collider phenomenology.
+                    </p>
+                    <div class="presentation-actions">
+                        <a href="../assets/presentations/defense-presentation.pdf" target="_blank" class="btn-presentation btn-primary-presentation">
+                            <span>📄</span> View PDF
+                        </a>
+                        <a href="../assets/presentations/defense-presentation.pptx" target="_blank" class="btn-presentation btn-secondary-presentation">
+                            <span>📊</span> Download PPTX
+                        </a>
+                        <button onclick="togglePreview('defense')" class="btn-presentation btn-secondary-presentation">
+                            <span>👁</span> Preview
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Flavorful Super Clockwork -->
+                <div class="presentation-card" data-type="conference">
+                    <div class="presentation-header">
+                        <div class="presentation-icon">⚛️</div>
+                        <div class="presentation-meta">
+                            <span class="presentation-type">Conference Talk</span>
+                            <span class="presentation-date">Recent</span>
+                            <span class="presentation-venue">Physics Conference</span>
+                        </div>
+                    </div>
+                    <h3 class="presentation-title">Flavorful Super Clockwork Mechanisms</h3>
+                    <p class="presentation-description">
+                        Presentation on supersymmetric clockwork models and their applications to flavor physics. Explores how clockwork mechanisms can address the flavor puzzle in beyond Standard Model physics.
+                    </p>
+                    <div class="presentation-actions">
+                        <a href="../assets/presentations/Presentation__Flavorful_Super_Clockwork.pdf" target="_blank" class="btn-presentation btn-primary-presentation">
+                            <span>📄</span> View PDF
+                        </a>
+                        <button onclick="togglePreview('clockwork')" class="btn-presentation btn-secondary-presentation">
+                            <span>👁</span> Preview
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quantum Field Theory Educational -->
+                <div class="presentation-card" data-type="educational">
+                    <div class="presentation-header">
+                        <div class="presentation-icon">📚</div>
+                        <div class="presentation-meta">
+                            <span class="presentation-type">Educational Talk</span>
+                            <span class="presentation-date">Academic</span>
+                            <span class="presentation-venue">Physics Department</span>
+                        </div>
+                    </div>
+                    <h3 class="presentation-title">Instantons in Quantum Field Theory</h3>
+                    <p class="presentation-description">
+                        Educational presentation covering instanton solutions in quantum field theory. Discusses mathematical foundations, physical interpretation, and applications to non-perturbative QFT phenomena.
+                    </p>
+                    <div class="presentation-actions">
+                        <a href="../assets/notes/Instantons_Presentation.pdf" target="_blank" class="btn-presentation btn-primary-presentation">
+                            <span>📄</span> View PDF
+                        </a>
+                        <button onclick="togglePreview('instantons')" class="btn-presentation btn-secondary-presentation">
+                            <span>👁</span> Preview
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Clifford Algebras and Spinors Educational -->
+                <div class="presentation-card" data-type="educational">
+                    <div class="presentation-header">
+                        <div class="presentation-icon">📚</div>
+                        <div class="presentation-meta">
+                            <span class="presentation-type">Educational Talk</span>
+                            <span class="presentation-date">Academic</span>
+                            <span class="presentation-venue">Physics Department</span>
+                        </div>
+                    </div>
+                    <h3 class="presentation-title">Clifford Algebras and Spinors</h3>
+                    <p class="presentation-description">
+                        An educational talk introducing Clifford algebras and their role in the theory of spinors. Covers algebraic structure, representations, and applications in quantum field theory and particle physics.
+                    </p>
+                    <div class="presentation-actions">
+                        <a href="../assets/notes/Clifford_Algebras_and_Spinors.pdf" target="_blank" class="btn-presentation btn-primary-presentation">
+                            <span>📄</span> View PDF
+                        </a>
+                        <button onclick="togglePreview('clifford')" class="btn-presentation btn-secondary-presentation">
+                            <span>👁</span> Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview Sections -->
+            <section class="content-section" id="defense-preview" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2>Preview: Thesis Defense - The Flavor Program</h2>
+                    <button onclick="closePreview('defense')" class="btn btn-secondary">Close Preview</button>
+                </div>
+                <div style="border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; background: #1a1a1a;">
+                    <iframe src="../assets/presentations/defense-presentation.pdf" width="100%" height="600px" style="border: none;">
+                        <p>Your browser doesn't support PDF viewing. <a href="../assets/presentations/defense-presentation.pdf" target="_blank">Download the presentation instead</a>.</p>
+                    </iframe>
+                </div>
+            </section>
+
+            <section class="content-section" id="clockwork-preview" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2>Preview: Flavorful Super Clockwork Mechanisms</h2>
+                    <button onclick="closePreview('clockwork')" class="btn btn-secondary">Close Preview</button>
+                </div>
+                <div style="border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; background: #1a1a1a;">
+                    <iframe src="../assets/presentations/Presentation__Flavorful_Super_Clockwork.pdf" width="100%" height="600px" style="border: none;">
+                        <p>Your browser doesn't support PDF viewing. <a href="../assets/presentations/Presentation__Flavorful_Super_Clockwork.pdf" target="_blank">Download the presentation instead</a>.</p>
+                    </iframe>
+                </div>
+            </section>
+
+            <section class="content-section" id="instantons-preview" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2>Preview: Instantons in Quantum Field Theory</h2>
+                    <button onclick="closePreview('instantons')" class="btn btn-secondary">Close Preview</button>
+                </div>
+                <div style="border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; background: #1a1a1a;">
+                    <iframe src="../assets/notes/Instantons_Presentation.pdf" width="100%" height="600px" style="border: none;">
+                        <p>Your browser doesn't support PDF viewing. <a href="../assets/notes/Instantons_Presentation.pdf" target="_blank">Download the presentation instead</a>.</p>
+                    </iframe>
+                </div>
+            </section>
+
+            <section class="content-section" id="clifford-preview" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2>Preview: Clifford Algebras and Spinors</h2>
+                    <button onclick="closePreview('clifford')" class="btn btn-secondary">Close Preview</button>
+                </div>
+                <div style="border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; background: #1a1a1a;">
+                    <iframe src="../assets/notes/Clifford_Algebras_and_Spinors.pdf" width="100%" height="600px" style="border: none;">
+                        <p>Your browser doesn't support PDF viewing. <a href="../assets/notes/Clifford_Algebras_and_Spinors.pdf" target="_blank">Download the presentation instead</a>.</p>
+                    </iframe>
+                </div>
+            </section>
+
+            <!-- Presentation Tips Section -->
+            <!-- <section class="content-section" style="margin-top: 3rem;">
+                <h2>Presentation Guidelines & Tips</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+                    <div style="background: rgba(255, 255, 255, 0.02); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <h3 style="color: #fff; margin-bottom: 1rem;">🎯 Effective Communication</h3>
+                        <p style="color: #b3b3b3; line-height: 1.6;">Clear structure, engaging visuals, and audience-appropriate content are essential for impactful physics presentations.</p>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.02); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <h3 style="color: #fff; margin-bottom: 1rem;">📊 Visual Design</h3>
+                        <p style="color: #b3b3b3; line-height: 1.6;">Use consistent formatting, meaningful diagrams, and avoid cluttered slides to maintain audience engagement.</p>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.02); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <h3 style="color: #fff; margin-bottom: 1rem;">⏱️ Time Management</h3>
+                        <p style="color: #b3b3b3; line-height: 1.6;">Practice timing, allow for questions, and prepare backup slides for deeper technical discussions.</p>
+                    </div>
+                </div>
+            </section> -->
+
+            <!-- Speaking Experience -->
+            <section class="content-section" style="margin-top: 3rem;">
+                <h2>Speaking Experience</h2>
+                <div style="background: rgba(255, 255, 255, 0.02); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); margin-top: 1.5rem;">
+                    <p style="color: #b3b3b3; line-height: 1.8; margin-bottom: 1.5rem;">
+                        I have experience presenting complex theoretical physics concepts to diverse audiences, from specialized research seminars to broader academic gatherings. My presentations focus on making advanced topics accessible while maintaining scientific rigor.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                        <div>
+                            <h4 style="color: #fff; margin-bottom: 0.5rem;">Research Areas</h4>
+                            <ul style="color: #b3b3b3; margin-left: 1.5rem;">
+                                <li>Beyond Standard Model Physics</li>
+                                <li>Flavor Physics & Rare Decays</li>
+                                <li>Effective Field Theory</li>
+                                <li>Supersymmetry & Clockwork Models</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: #fff; margin-bottom: 0.5rem;">Presentation Types</h4>
+                            <ul style="color: #b3b3b3; margin-left: 1.5rem;">
+                                <li>Conference Talks</li>
+                                <li>Thesis Defense</li>
+                                <li>Seminar Presentations</li>
+                                <li>Educational Lectures</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Aditya Gadam. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        function filterPresentations(type) {
+            const cards = document.querySelectorAll('.presentation-card');
+            const tabs = document.querySelectorAll('.filter-tab');
+            
+            // Update active tab
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (type === 'all' || card.dataset.type === type) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Preview functionality - using the same pattern as publications page
+        function togglePreview(type) {
+            const previewId = type + '-preview';
+            const previewSection = document.getElementById(previewId);
+            
+            if (previewSection.style.display === 'none' || previewSection.style.display === '') {
+                // Hide any other open previews
+                const allPreviews = document.querySelectorAll('[id$="-preview"]');
+                allPreviews.forEach(preview => preview.style.display = 'none');
+                
+                // Show the requested preview
+                previewSection.style.display = 'block';
+                
+                // Scroll to the preview
+                previewSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                previewSection.style.display = 'none';
+            }
+        }
+        
+        function closePreview(type) {
+            const previewId = type + '-preview';
+            document.getElementById(previewId).style.display = 'none';
+        }
+
+        // Add smooth animations on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.presentation-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
