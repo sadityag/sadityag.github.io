@@ -36,7 +36,7 @@
         <div class="container">
             <section class="page-header">
                 <h1>Publications & Thesis</h1>
-                <p>Academic publications, thesis work, and research contributions in theoretical physics and beyond the Standard Model phenomenology.</p>
+                <p>Academic publications, thesis work, and research contributions in theoretical physics, beyond the Standard Model phenomenology, and applied machine learning.</p>
             </section>
 
             <!-- Thesis Section -->
@@ -108,8 +108,39 @@
 
             <!-- Recent Publications Section -->
             <section class="content-section">
-                <h2>Recent Publications (2023-2025)</h2>
+                <h2>Recent Publications (2023-2026)</h2>
                 <div class="publications-list">
+                    <!-- Paper 0: Dynamic Bidding for Sponsored Products (AdKDD 2026) -->
+                    <div class="publication-item">
+                        <div class="publication-meta">
+                            <span class="publication-type">Workshop Paper</span>
+                            <span class="publication-year">2026</span>
+                            <span class="publication-venue">AdKDD 2026 (KDD Workshop)</span>
+                        </div>
+                        <h3 class="publication-title">Dynamic Bidding for Sponsored Products: Value-Based Bid Scaling with Per-SKU Normalization</h3>
+                        <p class="publication-authors">Wanchen Shao, Aditya Gadam, Dongyue Xie, Kurt Zimmer, Matt Lindsay, Sergey Kolbin, Jinjin Zhao, Jean-David Ruvini</p>
+                        <p class="publication-abstract">
+                            We present a production dynamic bidding system for sponsored-product advertising that adjusts CPC bids in real time based on predicted post-click conversion probability. The system models post-click conversion to align with the CPC charging event, normalizes predictions at the campaign-SKU level to preserve each advertiser's spending intent, and calibrates heterogeneous placement-specific signals to a shared CTR interface. Production experiments on a large home-furnishings marketplace show statistically significant gains in attributed conversions per click.
+                        </p>
+                        <div class="publication-links">
+                            <a href="../assets/pdfs/adkdd26-WDB.pdf" target="_blank" class="btn btn-primary">
+                                <span>📄</span> View PDF
+                            </a>
+                            <button onclick="togglePreview('paper0')" class="btn btn-secondary">
+                                <span>👁</span> Preview
+                            </button>
+                            <a href="../assets/presentations/slides-adkdd26-WDB.pdf" target="_blank" class="btn btn-secondary">
+                                <span>📊</span> Slides
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=fAvyEfAUgow" target="_blank" class="btn btn-secondary">
+                                <span>▶</span> Video
+                            </a>
+                            <a href="https://www.adkdd.org/papers/dynamic-bidding-for-sponsored-products%3A-value-based-bid-scaling-with-per-sku-normalization/2026" target="_blank" class="btn btn-secondary">
+                                <span>🔗</span> AdKDD
+                            </a>
+                        </div>
+                    </div>
+
                     <!-- Paper 1: New Strategies for New Physics Search (2025) -->
                     <div class="publication-item">
                         <div class="publication-meta">
@@ -296,6 +327,18 @@
             </section>
 
             <!-- Paper Preview Sections -->
+            <section class="content-section" id="paper0-preview" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2>Paper Preview: Dynamic Bidding for Sponsored Products</h2>
+                    <button onclick="closePreview('paper0')" class="btn btn-secondary">Close Preview</button>
+                </div>
+                <div style="border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; background: #1a1a1a;">
+                    <iframe src="../assets/pdfs/adkdd26-WDB.pdf" width="100%" height="600px" style="border: none;">
+                        <p>Your browser doesn't support PDF viewing. <a href="../assets/pdfs/adkdd26-WDB.pdf" target="_blank">Download the paper instead</a>.</p>
+                    </iframe>
+                </div>
+            </section>
+
             <section class="content-section" id="paper1-preview" style="display: none;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                     <h2>Paper Preview: New Strategies for New Physics Search</h2>

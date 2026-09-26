@@ -261,13 +261,13 @@
         <div class="container">
             <section class="page-header">
                 <h1>Presentations & Talks</h1>
-                <p>Conference presentations, seminars, and educational talks on theoretical physics and beyond the Standard Model phenomenology.</p>
+                <p>Conference presentations, seminars, and educational talks on theoretical physics, beyond the Standard Model phenomenology, and applied machine learning.</p>
             </section>
 
             <!-- Statistics -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">1</div>
+                    <div class="stat-number">2</div>
                     <div class="stat-label">Conference Presentations</div>
                 </div>
                 <div class="stat-card">
@@ -279,7 +279,7 @@
                     <div class="stat-label">Educational Talks</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">4</div>
+                    <div class="stat-number">5</div>
                     <div class="stat-label">Total Presentations</div>
                 </div>
             </div>
@@ -294,6 +294,36 @@
 
             <!-- Presentations Grid -->
             <div class="presentations-grid">
+                <!-- AdKDD 2026: Dynamic Bidding -->
+                <div class="presentation-card" data-type="conference">
+                    <div class="presentation-header">
+                        <div class="presentation-icon">📈</div>
+                        <div class="presentation-meta">
+                            <span class="presentation-type">Conference Talk</span>
+                            <span class="presentation-date">2026</span>
+                            <span class="presentation-venue">AdKDD Workshop at KDD 2026</span>
+                        </div>
+                    </div>
+                    <h3 class="presentation-title">Dynamic Bidding for Sponsored Products: Value-Based Bid Scaling with Per-SKU Normalization</h3>
+                    <p class="presentation-description">
+                        Talk on a production dynamic bidding system that adjusts CPC bids in real time using predicted post-click conversion probability, normalized at the campaign-SKU level to preserve advertiser spending intent. Covers the bid multiplier derivation, system architecture, and results from production experiments on a large home-furnishings marketplace.
+                    </p>
+                    <div class="presentation-actions">
+                        <a href="../assets/presentations/slides-adkdd26-WDB.pdf" target="_blank" class="btn-presentation btn-primary-presentation">
+                            <span>📄</span> View Slides
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=fAvyEfAUgow" target="_blank" class="btn-presentation btn-secondary-presentation">
+                            <span>▶</span> Watch Video
+                        </a>
+                        <button onclick="togglePreview('adkdd')" class="btn-presentation btn-secondary-presentation">
+                            <span>👁</span> Preview
+                        </button>
+                        <a href="../assets/pdfs/adkdd26-WDB.pdf" target="_blank" class="btn-presentation btn-secondary-presentation">
+                            <span>📝</span> Paper
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Thesis Defense -->
                 <div class="presentation-card" data-type="thesis">
                     <div class="presentation-header">
@@ -395,6 +425,21 @@
             </div>
 
             <!-- Preview Sections -->
+            <section class="content-section" id="adkdd-preview" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2>Preview: Dynamic Bidding for Sponsored Products (AdKDD 2026)</h2>
+                    <button onclick="closePreview('adkdd')" class="btn btn-secondary">Close Preview</button>
+                </div>
+                <div style="border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; background: #1a1a1a; aspect-ratio: 16 / 9;">
+                    <iframe src="https://www.youtube-nocookie.com/embed/fAvyEfAUgow" width="100%" height="100%" style="border: none;" title="Dynamic Bidding for Sponsored Products - AdKDD 2026" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div style="border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; background: #1a1a1a; margin-top: 1rem;">
+                    <iframe src="../assets/presentations/slides-adkdd26-WDB.pdf" width="100%" height="600px" style="border: none;">
+                        <p>Your browser doesn't support PDF viewing. <a href="../assets/presentations/slides-adkdd26-WDB.pdf" target="_blank">Download the slides instead</a>.</p>
+                    </iframe>
+                </div>
+            </section>
+
             <section class="content-section" id="defense-preview" style="display: none;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                     <h2>Preview: Thesis Defense - The Flavor Program</h2>
